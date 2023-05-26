@@ -37,7 +37,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 60 * 60 * 1000,
-      // secure: env.isProduction,      // sameSite: env.isProduction ? "none" : "strict",
+      httpOnly: true,
+      secure: env.isProduction,
+      sameSite: "none",
     },
     rolling: true,
     store: MongoStore.create({
