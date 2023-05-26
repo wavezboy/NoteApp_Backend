@@ -38,8 +38,8 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
-      secure: process.env.NODE === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
     },
     rolling: true,
     store: MongoStore.create({
