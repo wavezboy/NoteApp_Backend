@@ -19,7 +19,11 @@ app.use(morgan("dev"));
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5173", "https://wavez-note-app.netlify.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://wavez-note-app.netlify.app",
+      "https://note-app-frontend-seven.vercel.app",
+    ],
   })
 );
 
