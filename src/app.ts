@@ -39,7 +39,7 @@ app.use(
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
       secure: true,
-      sameSite: "none",
+      sameSite: "lax",
     },
     rolling: true,
     store: MongoStore.create({
@@ -47,16 +47,6 @@ app.use(
     }),
   })
 );
-
-// const origin =
-//   process.env.NODE_ENV === "production" ? "" : "http://localhost:5173";
-
-// app.use(
-//   cors({
-//     origin,
-//     credentials: true,
-//   })
-// );
 
 app.use("/api/notes", requestAuth, notesRoutes);
 app.use("/api/books", booksRoutes);
