@@ -27,8 +27,6 @@ app.use(
   })
 );
 
-app.set("trust-proxy", 1);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -40,8 +38,8 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: process.env.NODE === "production",
+      sameSite: "strict",
     },
     rolling: true,
     store: MongoStore.create({
