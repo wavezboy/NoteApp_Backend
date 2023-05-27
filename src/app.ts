@@ -19,22 +19,16 @@ app.use(morgan("dev"));
 app.use(
   cors({
     credentials: true,
-    origin: [
-      "http://localhost:5173",
-      "https://wavez-note-app.netlify.app",
-      "https://note-app-frontend-seven.vercel.app",
-    ],
+    origin: ["http://localhost:5173", "https://wavez-note-app.netlify.app"],
   })
 );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.set("trust proxy", 1);
-
 app.use(
   session({
-    proxy: true,
+    // proxy: true,
     secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
