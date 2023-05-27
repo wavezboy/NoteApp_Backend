@@ -34,8 +34,8 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 60 * 60 * 1000,
-      httpOnly: process.env.NODE === "production",
-      secure: process.env.NODE === "production",
+      httpOnly: process.env.NODE === "production" ? true : false,
+      secure: process.env.NODE === "production" ? true : false,
       sameSite: process.env.NODE === "production" ? "none" : "strict",
     },
     rolling: true,
