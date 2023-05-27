@@ -26,6 +26,8 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("trust-proxy", 1);
+
 app.use(
   session({
     proxy: true,
@@ -36,7 +38,7 @@ app.use(
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "none",
     },
     rolling: true,
     store: MongoStore.create({
