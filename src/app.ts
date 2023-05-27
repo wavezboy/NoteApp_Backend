@@ -36,7 +36,7 @@ app.use(
       maxAge: 60 * 60 * 1000,
       httpOnly: process.env.NODE === "production",
       secure: process.env.NODE === "production",
-      sameSite: "strict",
+      sameSite: process.env.NODE === "production" ? "none" : "strict",
     },
     rolling: true,
     store: MongoStore.create({
