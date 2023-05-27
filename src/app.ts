@@ -28,15 +28,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
-    // proxy: true,
+    proxy: true,
     secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: 60 * 60 * 1000,
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      httpOnly: process.env.NODE === "production",
+      secure: process.env.NODE === "production",
+      sameSite: "strict",
     },
     rolling: true,
     store: MongoStore.create({
